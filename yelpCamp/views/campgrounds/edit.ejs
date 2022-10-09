@@ -1,0 +1,140 @@
+<% layout("layouts/boilerplate")%>
+<div class="row">
+  <h1 class="text-center">Edit Campground</h1>
+  <div class="col-12 offset-md-2 col-md-8">
+    <p>Edit the details below!</p>
+    <!-- enctype is for image uploads -->
+    <form
+      enctype="multipart/form-data"
+      action="/campgrounds/<%= campground._id%>?_method=put"
+      method="post"
+      novalidate
+      class="needs-validation"
+    >
+      <div class="mb-3">
+        <label class="form-label" for="title">Title:</label>
+        <input
+          required
+          value="<%=campground.title%>"
+          class="form-control"
+          type="text"
+          name="campground[title]"
+          id="title"
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter a campground name.</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="description">Description:</label>
+        <textarea
+          class="form-control"
+          name="campground[description]"
+          id="description"
+          cols="30"
+          rows="10"
+          required
+        >
+<%=campground.description%></textarea
+        >
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter a description.</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="location">Location:</label>
+        <input
+          required
+          value="<%=campground.location%>"
+          class="form-control"
+          type="text"
+          name="campground[location]"
+          id="location"
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter a location.</div>
+      </div>
+
+      <div class="input-group mb-3"></div>
+      <div class="mb-3">
+        <label class="form-label" for="price">Price:</label>
+        <input
+          required
+          value="<%=campground.price%>"
+          class="form-control"
+          type="number"
+          name="campground[price]"
+          id="price"
+          placeholder="$0.00"
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter a price.</div>
+      </div>
+
+      <div class="mb-3">
+        <!-- <label class="form-label" for="image">Add images:</label>
+        <input
+          required
+          value="< %=campground.image%>"
+          class="form-control"
+          type="text"
+          value="https://random.imagecdn.app/600/600"
+          name="campground[image]"
+          id="image"
+        /> -->
+
+        <!-- <input type="file" multiple name="image" id="image" /> -->
+
+        <!-- OLD ABOVE THIS -->
+
+        <!-- IMAGE/FILES UPLOAD, form enctype and POST route at campgrounds
+     for "/" path related to uploads -->
+        <div class="mb-5 custom-file">
+          <label for="image" class="form-label mt-2 custom-file-label"
+            >Upload additional images:</label
+          >
+          <input
+            class="form-control"
+            type="file"
+            id="image"
+            multiple
+            name="image"
+          />
+        </div>
+      </div>
+
+      <!-- //DELETE EXISTING IMAGES -->
+      <div class="mb-3">
+        <%campground.images.forEach(function(img,i){%>
+        <!-- Replaced img.url with img.thumbnail from virtual property -->
+        <img src="<%=img.thumbnail%>" class="img-thumbnail" alt="" />
+        <div class="form-check-inline">
+          <!-- We made the id dynamic according to the image's index -->
+          <input
+            type="checkbox"
+            name="deleteImages[]"
+            value="<%=img.filename%>"
+            id="image-<%=i%>"
+          />
+        </div>
+        <label for="image-<%=i%>">Delete?</label>
+        <%})%>
+      </div>
+      <div class="mb-3">
+        <button class="btn bg-info mb-5">Save</button>
+      </div>
+    </form>
+    <form
+      method="post"
+      action="/campgrounds/<%=campground._id%>?_method=delete"
+    >
+      <button
+        class="bg-danger btn"
+        href="/campgrounds/<%=campground._id%>/delete"
+      >
+        Delete Campground
+      </button>
+    </form>
+    <a href="/campgrounds/<%=campground._id%>">Cancel</a>
+  </div>
+</div>

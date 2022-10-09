@@ -1,0 +1,66 @@
+<% layout("layouts/boilerplate") %>
+<!-- For current Date (OFF)
+<% const date = new Date(); let day = date.getDate(); let month =
+date.getMonth() + 1; let year = date.getFullYear(); let currentDate =
+`${day}-${month}-${year}`; %>
+<h3 class="text-center"><%=currentDate %></h3> -->
+<!-- //Our cluster animations -->
+<!-- <div style="width: 100%; height: 500px" id="map"></div> -->
+<div class="mb-5" id="cluster-map"></div>
+<h1 class="text-center mb-5">All Campgrounds</h1>
+<div class="mb-5">
+  <div class="d-grid gap-2 mb-3">
+    <!-- type="button will break form!!! -->
+    <a href="/campgrounds/new" class="btn btn-success"
+      >Create a new Campground!</a
+    >
+  </div>
+</div>
+<%for(let campground of campgrounds){ %>
+<div class="card mb-3">
+  <div class="row">
+    <div class="col-md-4">
+      <% if(campground.images.length){ %>
+      <img src="<%=campground.images[0].url%>" class="img-fluid" alt="" />
+      <% }else{ %>
+      <img
+        src="https://res.cloudinary.com/du2tr4b17/image/upload/v1665178287/YelpCamp/ug1ifbdmsik216qm41um.jpg"
+        class="img-fluid"
+        alt=""
+      />
+      <% } %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%=campground.title %></h5>
+        <!-- //Our virtual structure to match mapbox,  -->
+        <!-- Virtual do not appear on resulting object by default
+        , to do this we had to set {virtuals:true} -->
+        <!-- <h5 class="card-title"><%=campground.properties.popUpMarkup %></h5> -->
+
+        <p class="card-text"><%= campground.description %></p>
+        <p class="card-text">
+          <small class="text-muted"><%=campground.location %> </small>
+        </p>
+        <div class="d-grid gap-2 mb-3">
+          <!-- type="button will break form!!! -->
+          <a href="/campgrounds/<%=campground._id%>" class="btn btn-primary"
+            >Details</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>
+
+<!-- //For our cluster js animations -->
+
+<script>
+  const mapToken = "<%-process.env.MAPBOX_TOKEN%>";
+  //To access campground coordinates on map for clusters
+  //Quotes around ejs template will make map disappear
+  //campgrounds with an S, for all, not individual camps
+  const campgrounds = { features: <%-JSON.stringify(campgrounds)%> };
+</script>
+<script src="./javascripts/clusterMap.js"></script>

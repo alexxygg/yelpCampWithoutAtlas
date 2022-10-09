@@ -1,0 +1,111 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="row mb-5">
+  <!-- <div class="col-md-6 offset-md-3"> -->
+  <div class="col-12 offset-md-2 col-md-8">
+    <div class="card shadow">
+      <div class="card-body">
+        <h1 class="text-center">Add a New Campground</h1>
+
+        <p class="text-center">Enter the campground's details below!</p>
+        <!--enctype used for image uploads  -->
+        <form
+          enctype="multipart/form-data"
+          action="/campgrounds"
+          method="post"
+          novalidate
+          class="needs-validation"
+        >
+          <div class="mb-4">
+            <label class="form-label" for="title">Title:</label>
+            <input
+              class="form-control"
+              type="text"
+              name="campground[title]"
+              required
+              id="title"
+            />
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please enter a campground name.</div>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label" for="description">Description:</label>
+            <textarea
+              class="form-control"
+              name="campground[description]"
+              required
+              id="description"
+              cols="30"
+              rows="10"
+            ></textarea>
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please enter a description.</div>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label" for="location">Location:</label>
+            <input
+              class="form-control"
+              type="text"
+              name="campground[location]"
+              required
+              id="location"
+            />
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please enter a location.</div>
+          </div>
+
+          <div class="input-group mb-3"></div>
+          <div class="mb-3">
+            <label class="form-label" for="price">Price:</label>
+            <input
+              required
+              class="form-control"
+              type="number"
+              name="campground[price]"
+              id="price"
+              placeholder="$0.00"
+            />
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please enter a price.</div>
+          </div>
+
+          <!-- IMAGE/FILES UPLOAD, form enctype and POST route at campgrounds
+     for "/" path related to uploads -->
+          <div class="mb-5 custom-file">
+            <label for="image" class="form-label mt-4 custom-file-label"
+              >Upload single/multiple images:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              id="image"
+              multiple
+              name="image"
+            />
+          </div>
+
+          <!-- <div class="mb-4 has-validation">
+        <label class="form-label" for="image">Image URL:</label>
+        <input
+          class="form-control"
+          type="text"
+          value="https://random.imagecdn.app/600/600"
+          name="campground[image]"
+          required
+          id="image"
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter an image URL.</div>
+      </div> -->
+          <div class="d-grid gap-2 mb-3">
+            <!-- type="button will break form!!! -->
+            <button class="btn btn-success">Submit</button>
+          </div>
+        </form>
+        <a href="/campgrounds">Cancel</a>
+      </div>
+    </div>
+  </div>
+</div>

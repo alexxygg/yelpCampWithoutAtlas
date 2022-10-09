@@ -1,0 +1,60 @@
+<% layout("layouts/boilerplate")%>
+<!-- //This is the class we created for validation 
+    in class, not a default name -->
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+      <div class="card shadow">
+        <img
+          src="https://res.cloudinary.com/du2tr4b17/image/upload/v1665265000/YelpCamp/levi-guzman-zdSoe8za6Hs-unsplash_cymcwf.jpg"
+          alt=""
+          class="card-img-top"
+        />
+        <div class="card-body">
+          <!--          -->
+          <h5 class="card-title">Log In</h5>
+          <form
+            action="/login"
+            class="needs-validation"
+            novalidate
+            method="post"
+          >
+            <!-- Username -->
+            <div class="mb-4">
+              <label class="form-label" for="username">Username:</label>
+              <input
+                class="form-control"
+                type="text"
+                name="username"
+                required
+                id="username"
+              />
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Please enter your username.</div>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-4">
+              <label class="form-label" for="password">Password:</label>
+              <input
+                class="form-control"
+                type="password"
+                name="password"
+                required
+                id="password"
+              />
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Please enter your password.</div>
+            </div>
+            <!-- d-btn-block is for full row length button -->
+            <div class="d-grid gap-2">
+              <button class="btn btn-success">Submit</button>
+            </div>
+          </form>
+          <!--          -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

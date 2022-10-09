@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YelpCamp</title>
+
+    <link rel="stylesheet" href="/stylesheets/home.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="d-flex text-center text-white bg-dark flex-column">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="mb-auto">
+        <div>
+          <h3 class="float-md-start mb-0">YelpCamp</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a href="#" class="nav-link active" aria-current="page">Home</a>
+            <a href="/campgrounds" class="nav-link">Campgrounds</a>
+            <% if(!currentUser){ %>
+            <a href="/login" class="nav-link">Log In</a>
+            <a href="/register" class="nav-link">Register</a>
+            <% } else{%>
+            <a href="/logout" class="nav-link">Log Out</a>
+            <% } %>
+          </nav>
+        </div>
+      </header>
+    </div>
+    <div class="cover-container d-flex w-100 mx-auto flex-column">
+      <main class="px-3 mb-5">
+        <h1>YelpCamp</h1>
+        <p class="lead">
+          Join the YelpCamp community today! <br />
+          We want to help you visit the best campgrounds with the help of
+          numerous reviews and helpful information.
+        </p>
+        <a href="/campgrounds" class="btn btn-lg btn-secondary font-weight-bold"
+          >View Campgrounds</a
+        >
+      </main>
+    </div>
+    <!-- <footer class="mt-auto text-white-50">&copy; YelpCamp 2022</footer> -->
+    <footer class="footer bg-dark py-3 mt-auto">
+      <div class="container">
+        <span class="text-muted">&copy;YelpCamp 2022</span>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+      integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

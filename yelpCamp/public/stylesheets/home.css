@@ -1,0 +1,36 @@
+body {
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://res.cloudinary.com/du2tr4b17/image/upload/v1665262754/YelpCamp/mike-erskine-S_VbdMTsdiA-unsplash_x1r30a.jpg");
+  background-size: cover;
+  /* //For no repeat */
+  background-position: center;
+  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 5rem rgba(0, 0, 0, 0.5);
+}
+.cover-container {
+  max-width: 60vw;
+}
+
+.nav-link {
+  padding: 0.25rem 0;
+  font-weight: 700;
+  color: #57cc99;
+  margin-left: 1rem;
+  border-bottom: 00.25rem solid transparent;
+}
+
+.nav-link:hover {
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+.nav-link.active {
+  color: #38b000;
+  border-bottom-color: white;
+}
+.btn-secondary,
+.btn-secondary:hover {
+  text-shadow: none;
+  background-color: #57cc99;
+  color: black;
+}
